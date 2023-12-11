@@ -1,0 +1,8 @@
+﻿@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+@import "../Components/Separator.razor.css";
+@import "../Components/Button.razor.css";
+
+@import "tailwindcss/utilities";
+

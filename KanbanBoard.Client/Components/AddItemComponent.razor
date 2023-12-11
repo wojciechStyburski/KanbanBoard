@@ -1,0 +1,14 @@
+﻿<div>
+    <EditForm class="p-2 m-2" Model="_newItem" OnValidSubmit="Save">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="flex">
+            <InputText class="py-1 px-3 border-b w-full" @bind-Value="_newItem.Description" placeholder="Opis..." />
+            <button class="btn hover:bg-gray-700 bg-gray-400 text-black font-bold p-2 mx-3">
+                Zapisz
+            </button>
+        </div>
+
+    </EditForm>
+</div>

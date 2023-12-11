@@ -1,0 +1,22 @@
+﻿<div dropzone="true" class="border-2 border-gray-800 rounded-lg text-left text-black p-2 m-4" ondragover="event.preventDefault();" @ondrop="OnDropHandler">
+
+    <div class="border-b p-4 font-mono text-2xl text-center">@State.GetDisplayName()</div>
+        
+        @foreach (var item in Items.Where(x => x.State == State && x.State != State.Archive))
+        {
+        <div class="flex justify-start items-center @_classes bg-light p-3 my-5 border-2 border-black-500 border-opacity-75 md:border-opacity-75"
+             draggable="true" @ondragstart="@(() => OnStartDragHandler(item))">
+
+                <div class="mr-3">
+                    @item.Description
+                </div>
+                
+                @if(State == State.Closed)
+                {
+                    <div>
+                        <i class="bi bi-archive-fill" @onclick="@(() => OnArchiveHandler(item))"></i>
+                    </div>
+                }
+            </div>
+        }
+</div>

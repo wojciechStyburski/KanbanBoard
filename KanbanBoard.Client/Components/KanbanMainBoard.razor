@@ -1,0 +1,36 @@
+﻿<div>
+    @if (_items is null)
+    {
+        <div class="text-center">
+            <p><em>Trwa ładowanie danych...</em></p>
+        </div>
+    }
+    else if (!_items.Any())
+    {
+        <div class="text-center">
+            <p><em>Brak zadań...</em></p>
+        </div>
+    }
+    else
+    {
+        <div>
+            <EditForm Model="_newItem" OnValidSubmit="Save">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+
+                <div class="flex justify-center items-center">
+                    <InputText class="w-full m-4 p-2 rounded-l-lg" @bind-Value="_newItem.Description" placeholder="Opis..." />
+
+                    <button class="btn btn-primary m-2 hover:bg-blue-700 text-white font-bold rounded-r-lg">
+                        Zapisz
+                    </button>
+                </div>
+            </EditForm>
+        </div>
+        <div>
+            <KanbanItem State="State.New" Items="_items" OnDrop="OnDrop" OnStartDrag="OnStartDrag" OnArchive="OnArchive"> </KanbanItem>
+            <KanbanItem State="State.Active" Items="_items" OnDrop="OnDrop" OnStartDrag="OnStartDrag" OnArchive="OnArchive"> </KanbanItem>
+            <KanbanItem State="State.Closed" Items="_items" OnDrop="OnDrop" OnStartDrag="OnStartDrag" OnArchive="OnArchive"> </KanbanItem>
+        </div>
+    }
+</div>

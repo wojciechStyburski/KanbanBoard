@@ -1,0 +1,47 @@
+﻿@page "/archive"
+
+<div class="items-center align-bottom text-center">
+    @if (_items is null)
+    {
+        <p><em>Trwa ładowanie danych...</em></p>
+    }
+    else if (!_items.Any())
+    {
+        <p><em>Brak zarchiwzowanych zadań...</em></p>
+    }
+    else
+    {
+        <div class="relative overflow-x-auto">
+            <table class="w-full text-sm text-center rtl:text-right">
+                <thead class="text-xs">
+                    <tr>
+                        <th class="px-6 py-3">
+                            Identyfikator
+                        </th>
+                        <th class="px-6 py-3">
+                            Opis
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <Virtualize Items="_items" Context="item" SpacerElement="tr">
+                        <tr class="bg-white border-b">
+                            <td class="px-6 py-4">
+                                @item.Id
+                            </td class="px-6 py-4">
+                            <td>
+                                @item.Description
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-info btn-sm my-1" @onclick="() => RestoreTask(item.Id)">
+                                    Przywróć
+                                </button>
+                            </td>
+                        </tr>
+                    </Virtualize>
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+

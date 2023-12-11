@@ -1,0 +1,49 @@
+﻿@using KanbanBoard.Client.Components.UI.Icon
+@using KanbanBoard.Client.Components.UI.Logo
+
+<div class="flex items-center justify-between text-white bg-gray-800 border-b border-gray-700 shadow z-30 p-4 md:flex-shrink-0
+    md:w-56 md:py-0 md:px-8 md:justify-center">
+    <Logo></Logo>
+
+    <div class="flex justify-end relative w-3/4 md:hidden" @onclick="HandleOnClick">
+        <MenuIcon></MenuIcon>
+
+
+        <div class="@_classes">
+            <div class="bg-gray-800 p-5 rounded shadow-xl border border-gray-700 font-normal">
+                <NavMenu></NavMenu>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    private string _classes;
+    private bool _isVisible = false;
+
+    private void SetVisible(bool value)
+    {
+        _isVisible = value;
+    }
+
+    private void HandleOnClick()
+    {
+
+        SetVisible(!_isVisible);
+        SetClasses();
+    }
+
+    private void SetClasses()
+    {
+        if (_isVisible)
+            _classes = "absolute top-8 right-0 z-50 text-center";
+        else
+            _classes = "absolute top-8 right-0 z-50 text-center hidden";
+    }
+
+    protected override void OnInitialized()
+    {
+        SetClasses();
+    }
+}

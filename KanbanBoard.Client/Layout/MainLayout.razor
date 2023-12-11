@@ -1,0 +1,31 @@
+﻿@inherits LayoutComponentBase
+
+<div class="flex flex-col h-screen w-screen">
+    <div class="md:flex">
+        <PrimaryNavbar></PrimaryNavbar>
+    </div>
+
+    <div class="flex flex-grow overflow-hidden">
+        <div class="hidden md:flex items-start justify-center px-6 py-6 bg-gray-800 text-white md:flex-shrink-0 md:w-56 md:justify-center">
+            <div class="relative">
+                <NavMenu></NavMenu>
+            </div>
+        </div>
+
+        <div class="w-full overflow-hidden overflow-y-auto p-0 bg-gray-100 py-0">
+            <section>
+                <ErrorBoundary @ref="_errorBoundary">
+                    <ChildContent>
+                        @Body
+                    </ChildContent>
+                    <ErrorContent>
+                        <div class="flex flex-col items-center">
+                            <h1 class="text-red-500">Wystąpił nieoczekiwany wyjątek</h1>
+                            <p>Spróbuj ponownie lub skontaktuj się z administratorem.</p>
+                        </div>
+                    </ErrorContent>
+                </ErrorBoundary>
+            </section>
+        </div>
+    </div>
+</div>

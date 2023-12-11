@@ -1,0 +1,8 @@
+﻿<li>
+    <NavLink href="@Url" class="p-1 text-white hover:text-indigo-500 focus:text-indigo-500">@Content</NavLink>
+</li>
+
+@code {
+    [Parameter] public string Url { get; set; }
+    [Parameter] public string Content { get; set; }
+}

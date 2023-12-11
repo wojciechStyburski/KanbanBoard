@@ -1,0 +1,88 @@
+﻿@page "/testPage"
+
+<div class="flex justify-center min-h-screen bg-gray-200">
+    <div class="bg-white shadow-x1 min-h-full w-full md:w-10/12 lg:w3/4 xl:w-2/3 wx1:w-1/2">
+        <div class="p-10 text-center">
+            
+            <div class="p-10">
+                <h1 class="text-4xl font-sans antialiased tracking-wider">
+                    <span class="font-extrabold underline">
+                        Twój
+                    </span>
+                    <strong class="text-indigo-600">
+                        Panel administracyjny
+                    </strong>
+                </h1>
+            </div>
+            
+            <div class="p-10">
+                <div class="antialiased">
+                    zbudowany za pomocą <strong>Tailwind CSS</strong> i <strong>Blazor</strong> <br /> na podstawie książki
+                    <em>Tailwind CSS. Projektowanie stron WWW i podejście utility-first</em> <br />
+                    wydanej nakładem wydawncitwa Helion
+                </div>
+            </div>
+            <div class="p-10 ">
+                <Separator></Separator>
+            </div>
+            
+            <div class="p-10 mb-5">
+                <div class="flex flex-col">
+                    <h2 class="text-3xl">
+                        Nasze przyciski 
+                    </h2>
+                    <div class="text-center my-5">
+                        <Button Classes="btn" Content="Przycisk bazowy"></Button>
+                    </div>
+
+                    <div class="grid grid-cols-5 gap-2">
+                        <ButtonSuccess Content="Zapisz"></ButtonSuccess>
+                        <ButtonDanger Content="Usuń"></ButtonDanger>
+                        <ButtonInfo Content="Zobacz"></ButtonInfo>
+                        <ButtonPrimary Content="Edytuj"></ButtonPrimary>
+                        <ButtonWarning Content="Sprawdź"></ButtonWarning>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-10 mb-5">
+                <div class="flex flex-col">
+                    <h2 class="text-3xl mb-5">
+                        Pola formularza
+                    </h2>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 gap-lg-2 text-left">
+                        <div>
+                            <label class="`text-gray-500 text-sm mb-1 block">Pole tekstowe</label>
+                            <InputText @bind-Value="TextField" class="border px-3 py-2 w-full rounded-lg"></InputText>
+                        </div>
+                        <div>
+                            <label class="text-gray-500 text-sm block mb-1">Pole wyboru</label>
+                            <InputSelect class="border px-3 py-2 rounded-lg w-full" @bind-Value="SelectId">
+                                <option value="0" disabled="disabled">-- Wybierz --</option>
+                            </InputSelect>
+                        </div>
+                        <div>
+                            <label class="text-gray-500 text-sm mb-1 block">Pole wielowierszowe</label>
+                            <InputTextArea class="border px-3 py-2 w-full rounded-lg" @bind-Value="TextAreaField"></InputTextArea>
+                        </div>
+                        <div class="flex justify-start items-center">
+                            <InputCheckbox class="mr-1" @bind-Value="CheckBoxField"> </InputCheckbox>
+                            <label>Pole zaznaczenia jednorazowego</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <Card Classes="bg-white block shadow rounded-lg p-5" Title="Sprawdź nasz szablon">
+                <Content>
+                    <div class="flex justify-center space-x-2">
+                        <a href="" class="btn btn-success">Zaloguj się</a>
+                        <a href="" class="btn btn-primary">Zarejestruj się</a>
+                    </div>
+                </Content>
+            </Card>
+
+        </div>
+    </div>
+</div>
